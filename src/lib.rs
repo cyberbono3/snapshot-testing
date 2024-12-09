@@ -68,14 +68,15 @@ fn test_wobble() {
 
 #[test]
 fn test_api() {
-    insta::assert_json_snapshot!(wobble_api(&WobbleRequest{
-        id: Uuid::new_v4(),
-        options: WobbleOptions::default(),
-        input: "Hello World".to_string(),
-    }), 
-      {".id" => "[uuid]"}
-    )
+    insta::glob!("snapshot_inputs/*.json", |path| {
+        let req: WobbleRequest = serde_json::from_slice(&std::fs::read(path).unwrap()).unwrap();
+        insta::assert_json_snapshot!(wobble_api(&req), {
+            ".id" => "[uuid]"
+        })
+    }
 
+    )
+    
 }
 
 

@@ -1,0 +1,10 @@
+---
+source: src/lib.rs
+expression: wobble_api(&req)
+input_file: src/snapshot_inputs/simple.json
+snapshot_kind: text
+---
+{
+  "id": "[uuid]",
+  "output": "helLo_wor_D"
+}
