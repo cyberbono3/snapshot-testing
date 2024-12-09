@@ -1,0 +1,9 @@
+---
+source: src/lib.rs
+expression: "wobble_api(&WobbleRequest{\n    id: Uuid::new_v4(), options: WobbleOptions::default(), input:\n    \"Hello World\".to_string(),\n})"
+snapshot_kind: text
+---
+{
+  "id": "[uuid]",
+  "output": "helLo wor_D"
+}
